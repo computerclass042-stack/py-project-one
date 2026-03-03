@@ -8,7 +8,7 @@ st.write("Apne savings ya loan ka interest turant calculate karein.")
 
 # Sidebar for User Info
 st.sidebar.header("Developer Details")
-st.sidebar.info("Vishal Choudhary\nProfessional Intern at NGO") #
+st.sidebar.info("Anuj\nProfessional Intern at NGO") #
 
 # Input Fields
 col1, col2 = st.columns(2)
@@ -37,4 +37,5 @@ if st.button("Calculate Karein"):
 # Educational Note for Students
 st.divider()
 st.caption("Note: Ye calculator 6th aur 7th grade ke math concepts par based hai.") #
+
 
