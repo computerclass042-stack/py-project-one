@@ -1,41 +1,22 @@
 import streamlit as st
 
-# Page Configuration
-st.set_page_config(page_title="Interest Calculator", page_icon="💰")
+st.title("📏 Simple Unit Converter")
+st.write("NGO Students ke liye asaan tool") #
 
-st.title("💰 Smart Interest Calculator")
-st.write("Apne savings ya loan ka interest turant calculate karein.")
+# Sidebar for credit
+st.sidebar.markdown("### Developer")
+st.sidebar.info("Anuj\nNGO Intern") #
 
-# Sidebar for User Info
-st.sidebar.header("Developer Details")
-st.sidebar.info("Anuj\nProfessional Intern at NGO") #
+# Selection
+option = st.selectbox("Kya convert karna hai?", ["Kilometers to Miles", "Celsius to Fahrenheit"])
 
-# Input Fields
-col1, col2 = st.columns(2)
-with col1:
-    principal = st.number_input("Principal Amount (Rs.)", min_value=0.0, step=100.0, value=1000.0)
-    rate = st.number_input("Interest Rate (% per year)", min_value=0.0, step=0.1, value=5.0)
-with col2:
-    time = st.number_input("Time Period (Years)", min_value=0.0, step=0.5, value=1.0)
-    interest_type = st.selectbox("Interest Type", ["Simple Interest", "Compound Interest"])
+# Logic
+if option == "Kilometers to Miles":
+    km = st.number_input("Enter Kilometers", value=1.0)
+    miles = km * 0.621371
+    st.success(f"{km} KM = {miles:.2f} Miles")
 
-# Calculation Logic
-if st.button("Calculate Karein"):
-    if interest_type == "Simple Interest":
-        interest = (principal * rate * time) / 100
-        total = principal + interest
-    else:
-        total = principal * (pow((1 + rate / 100), time))
-        interest = total - principal
-
-    # Result Display
-    st.divider()
-    st.subheader("Results:")
-    st.success(f"Interest Amount: ₹{interest:,.2f}")
-    st.info(f"Total Maturity Amount: ₹{total:,.2f}")
-
-# Educational Note for Students
-st.divider()
-st.caption("Note: Ye calculator 6th aur 7th grade ke math concepts par based hai.") #
-
-
+elif option == "Celsius to Fahrenheit":
+    c = st.number_input("Enter Celsius", value=0.0)
+    f = (c * 9/5) + 32
+    st.success(f"{c}°C = {f:.2f}°F")
