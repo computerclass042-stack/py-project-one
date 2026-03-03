@@ -1,16 +1,16 @@
-# Quiz game.
+import streamlit as st
 
-score = 0
+st.title("My Python Quiz & Calculator")
 
-print("Quiz Game")
+# Input lene ke liye Streamlit ke buttons ya text_input use karo
+name = st.text_input("Aapka Naam kya hai?")
+if name:
+    st.write(f"Hello {name}, welcome to my project!")
 
-answer = input("Q1: What is the capital of India? ")
-if answer.lower() == "delhi":
-    score += 1
+# Example Calculator logic
+num1 = st.number_input("Pehla Number daalein", value=0)
+num2 = st.number_input("Doosra Number daalein", value=0)
 
-answer = input("Q2: 5 * 6 = ? ")
-if answer == "30":
-    score += 1
-
-print("Your Score:", score)
-print("You won")
+if st.button("Add Karo"):
+    result = num1 + num2
+    st.success(f"Answer hai: {result}")
